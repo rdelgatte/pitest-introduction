@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Mutation testing with Pitest</title>
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/white.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+  <link rel="stylesheet" href="css/override.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+    <section data-markdown>Do you trust your unit tests?</section>
+    <section data-markdown>Is code coverage reliable?</section>
+    <section data-markdown>
+      <script type="text/template">
+        ![Pitest](./assets/logo.png)
+
+        <h2><span class="pitest-pink">Mutation</span> testing</h2>
+      </script>
+    </section>
+    <section data-markdown>How to test your unit tests?</section>
+    <section data-markdown>
+      <script type="text/template">
+        ## Concept
+
+        <p>‘Faults (or <span class="pitest-pink">*mutations*</span>) are automatically seeded into your code, then your
+          tests are run’</p>
+
+        - If one of your tests fails the mutation is <span class="pitest-pink">*KILLED*</span> = <span
+            class="good">GOOD</span>
+        - Else the mutation <span class="pitest-pink">*SURVIVED*</span> = <span class="bad">BAD</span>
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ## Expectations
+
+        If none of your tests fails when your code is modified
+        Then your tests are <span class="pitest-pink">*irrelevant*</span> / <span
+            class="pitest-pink">*incomplete*</span>
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ## What is a <span class="pitest-pink">*mutation*</span>?
+
+        - Replacement of boolean expression with `true` or `false`
+        - Replacement of arithmetic operations (`+`, `-`, `*`, `/`)
+        - Changing boolean relations (`>`, `>=`, `<`, `<=`, `==`)
+        - Statement deletion
+        - Statement duplication / insertion
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### Case 1: RangeValidator
+
+        Validate an input number to be between 1 and 100
+        ![code](./assets/code.png)
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### Unit tests - 100% coverage (testing nothing…)
+        ![test1](./assets/test1.png)
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### Unit tests with assertions
+        ![test2](./assets/test2.png)
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### Add and run Pitest
+        <div class="left">
+          <ul>
+            <li>Maven | Gradle | Ant quick starters</li>
+            <li>Adding dependency</li>
+            <li>Works with JUnit 5</li>
+          </ul>
+        </div>
+        <div class="right">![pom](./assets/pom.png)</div>
+        http://pitest.org/quickstart
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### Pitest running and report
+        ![report](./assets/report.png)
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### Mutation 1 - RETURN_VALS
+        ![mutation1](./assets/mutation1.png)
+
+        <div class="mutation-result-ok">Test fail ⇒ Mutant is <b>KILLED</b></div>
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### Mutation 2 - NEGATE_CONDITIONALS
+        ![mutation2](./assets/mutation2.png)
+
+        <div class="mutation-result-ok">One test fails ⇒ Mutant is <b>KILLED</b></div>
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### Mutation 3 - CONDITIONALS_BOUNDARY
+        ![mutation3](./assets/mutation3.png)
+
+        <div class="mutation-result-ko">All Tests pass ⇒ Mutant <b>SURVIVED</b></div>
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### Handling mutations
+
+        ![mutations](./assets/mutations.png)
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### How does it work?
+
+        - Pitest generates mutants by manipulating the bytecode.
+
+        - A main process which holds the list of all possible mutations
+
+        - Pitest creates a number of child processes (or <span
+            class="pitest-pink">minions</span>) that do the work of running tests against each mutant
+        </span>
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### A mutant is identified with
+        - Mutation operator that could create it
+        - Class + method signature
+        - Index to the bytecode instruction that is mutated
+
+        ![minions](./assets/minions.png)
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### Feedbacks
+
+        - Setup is <span class="pitest-pink">easy</span> (configuration options)
+        - Fast feedbacks
+        - More confidence with your unit tests reliability
+        - It’s fast : 5’30” before / 8’30” (built with maven) so <span class="pitest-pink">+3’00</span> for <span
+            class="pitest-pink">1200+ unit tests</span>
+        - You need ‘real’ unit tests so it can keep fast and efficient
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### Sonar
+
+        ![sonar](./assets/sonar.png)
+      </script>
+    </section>
+    <section data-markdown>
+      <script type="text/template">
+        ### Going further
+
+        - <span class="pitest-pink">scmMutationCoverage</span>: analyses only classes that match the filters and the
+        source file has a given status within the project source control system (by default ADDED or MODIFIED)
+        - Thresholds (<span class="pitest-pink">mutationThreshold</span> & <span
+            class="pitest-pink">coverageThreshold</span>)
+        - Incremental analysis (experimental)
+        - Configure new <span class="pitest-pink">mutators</span>
+      </script>
+    </section>
+  </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+  // More info about config & dependencies:
+  // - https://github.com/hakimel/reveal.js#configuration
+  // - https://github.com/hakimel/reveal.js#dependencies
+  Reveal.initialize({
+    dependencies: [
+      { src: 'plugin/markdown/marked.js' },
+      { src: 'plugin/markdown/markdown.js' },
+      { src: 'plugin/notes/notes.js', async: true },
+      {
+        src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+        hljs.initHighlightingOnLoad();
+      }
+      }
+    ]
+  });
+</script>
+</body>
+</html>
