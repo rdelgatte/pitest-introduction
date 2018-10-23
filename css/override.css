@@ -39,3 +39,7 @@
   width: 50px;
   float: left;
 }
+
+.bitly {
+  font-size: 2em !important;
+}
