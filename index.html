@@ -28,15 +28,64 @@
     <section><h2>Do you trust your <span class='pitest-pink'>unit tests</span>?</h2></section>
 
     <section data-markdown>
-      ## [bit.ly/2PJgc7G](http://bit.ly/2PJgc7G)
+      [bit.ly/2PJgc7G](http://bit.ly/2PJgc7G)
     </section>
 
     <section data-markdown>
       <script type='text/template'>
-        ![Pitest](./assets/logo.png)
+        ### Study case: Range Validator
 
-        <h3><span class='pitest-pink'>Mutation</span> testing</h3>
+        Validate an input number to be between 1 and 100
+        ![code](./assets/code.png)
       </script>
+    </section>
+
+    <section data-markdown>
+      [![sonar report](./assets/sonar-report.png)](http://localhost:9000/dashboard?id=com.rdelgatte%3Apitest-examples)
+    </section>
+
+    <section data-markdown>
+      ![awesome](./assets/awesome.png)
+    </section>
+
+    <section>
+      <section data-markdown>
+        Not really... let's have a look to our unit tests
+      </section>
+
+      <section data-markdown>
+        ![unit-tests-1](./assets/unit-tests-1.png)
+      </section>
+
+      <section data-markdown>
+        ![what](./assets/what.png)
+      </section>
+    </section>
+
+    <section data-markdown>
+      ![jacoco icon](./assets/jacoco-icon.png)
+
+      ![jacoco report](./assets/jacoco-report.png)
+    </section>
+
+    <section data-markdown>
+      ### Line coverage
+
+      How much of your code lines are executed while processing unit tests
+
+      ![line-coverage-test](./assets/line-coverage-test.png)
+    </section>
+
+    <section data-markdown>
+      ### Branch coverage
+
+      All program branches or conditional states should be tested at least once
+
+      ![jacoco report](./assets/jacoco-report.png)
+    </section>
+
+    <section data-markdown>
+      ![assert-results](./assets/assert-results.png)
     </section>
 
     <section data-markdown>
@@ -45,10 +94,28 @@
 
     <section data-markdown>
       <script type='text/template'>
+        <h3><span class='pitest-pink'>Mutation</span> coverage</h3>
+      </script>
+    </section>
+
+    <section data-markdown>
+      <script type='text/template'>
         ## Concept
 
         <p>‘Faults (or <span class='pitest-pink'>*mutations*</span>) are automatically seeded into your code, then your
           tests are processed’</p>
+      </script>
+    </section>
+
+    <section data-markdown>
+      <script type='text/template'>
+        ## What is a <span class='pitest-pink'>*mutation*</span>?
+
+        - Replacement of boolean expression with `true` or `false`
+        - Replacement of arithmetic operations (`+`, `-`, `*`, `/`)
+        - Changing boolean relations (`>`, `>=`, `<`, `<=`, `==`)
+        - Statement deletion
+        - Statement duplication or insertion
       </script>
     </section>
 
@@ -87,49 +154,17 @@
     </section>
 
     <section data-markdown>
-      <script type='text/template'>
-        ## What is a <span class='pitest-pink'>*mutation*</span>?
-
-        - Replacement of boolean expression with `true` or `false`
-        - Replacement of arithmetic operations (`+`, `-`, `*`, `/`)
-        - Changing boolean relations (`>`, `>=`, `<`, `<=`, `==`)
-        - Statement deletion
-        - Statement duplication or insertion
-      </script>
-    </section>
-    <section data-markdown>
-      <script type='text/template'>
-        ### Study case: Range Validator
-
-        Validate an input number to be between 1 and 100
-        ![code](./assets/code.png)
-      </script>
-    </section>
-    <section data-markdown>
-      <script type='text/template'>
-        ### Unit tests - 100% coverage (testing nothing…)
-        ![test1](./assets/test1.png)
-        ![coverage](./assets/coverage.png)
-      </script>
-    </section>
-    <section data-markdown>
-      <script type='text/template'>
-        ### Unit tests with assertions
-        ![test2](./assets/test2.png)
-      </script>
+      ![Pitest](./assets/logo.png)
     </section>
 
     <section data-markdown>
-      <script type='text/template'>
-        ### Add and run Pitest
-        <div class='left'>
-          - Maven | Gradle | Ant quick starters
-          - Adding dependency
-          - Works with JUnit 5
-        </div>
-        <div class='right'>![pom](./assets/pom.png)</div>
-        http://pitest.org/quickstart
-      </script>
+      ## Configure Pitest
+
+      - Maven | Gradle | Ant quick starters
+      - Adding dependency
+      - Works with JUnit 5
+
+      http://pitest.org/quickstart
     </section>
 
     <section data-markdown>
@@ -148,7 +183,7 @@
         </configuration>
         ```
         - `avoidCallsTo` (ie. for logging services)
-        - `skip` (as in any goog testing tool...)
+        - `skip` (as in any good testing tool...)
         - ...
       </script>
     </section>
@@ -205,11 +240,12 @@
       </script>
     </section>
     <section data-markdown>
-      ![minion](./assets/minion.png)
+      ![xmen](./assets/xmen.jpg)
     </section>
     <section data-markdown>
       <script type='text/template'>
         ### A mutant is identified with
+
         - Mutation operator
         - Class and method signature
         - Index to the bytecode instruction which is mutated
@@ -220,12 +256,19 @@
 
     <section data-markdown>
       <script type='text/template'>
+        ### <div class='logo'>![tesseract](./assets/tesseract-logo.png)</div>Tesseract
+
+        ![tesseract](./assets/tesseract.png)
+      </script>
+    </section>
+
+    <section data-markdown>
+      <script type='text/template'>
         ### Feedbacks
 
         - Setup is <span class='pitest-pink'>easy</span> (configuration options)
         - Fast feedbacks
-        - Confidence about your unit tests reliability
-        - It’s fast : 5'30 vs 8’30” (maven) so <span class='pitest-pink'>+3’00</span> for <span class='pitest-pink'>1200+ unit tests</span>
+        - It’s fast: 5'30 vs 8’30” (maven) so <span class='pitest-pink'>+3’00</span> for <span class='pitest-pink'>1200+ unit tests</span>
         - You need ‘real’ unit tests so it can keep fast and efficient
       </script>
     </section>
@@ -262,10 +305,10 @@
       <script type='text/template'>
         ### What did we just learn?
 
-        - Mutation testing highlights <span class='pitest-pink'>unit tests relevance</span>
-        - Pitest manipulates bytecode to generate mutations in your java code
-        - It reports all potential issues and missing covered cases in your unit tests...
-        - ... but first, it helps building <span class='pitest-pink'>better unit tests</span>
+        - Code quality is not just about basic coverage results
+        - Mutation coverage highlights <span class='pitest-pink'>unit tests relevance</span>
+        - It helps building <span class='pitest-pink'>better unit tests</span>
+        - Pitest is really easy to setup in a java project
       </script>
     </section>
     <section data-markdown>
@@ -273,7 +316,7 @@
 
       Slides: [bit.ly/2QTdBrN](bit.ly/2QTdBrN)
 
-      Code: [github.com/rdelgatte/pitest](github.com/rdelgatte/pitest)
+      Code: [github.com/rdelgatte/pitest-examples](github.com/rdelgatte/pitest-examples)
     </section>
   </div>
 </div>

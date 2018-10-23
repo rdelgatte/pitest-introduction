@@ -34,3 +34,8 @@
   background-color: #f4ccccff;
   border: 1px solid black;
 }
+
+.logo {
+  width: 50px;
+  float: left;
+}
