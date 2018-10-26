@@ -9,18 +9,7 @@
   <link rel='stylesheet' href='css/reveal.css'>
   <link rel='stylesheet' href='css/theme/white.css'>
 
-  <!-- Theme used for syntax highlighting of code -->
-  <link rel='stylesheet' href='lib/css/zenburn.css'>
   <link rel='stylesheet' href='css/override.css'>
-
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-    document.getElementsByTagName('head')[0].appendChild(link);
-  </script>
 </head>
 <body>
 <div class='reveal'>
@@ -113,11 +102,13 @@
       <script type='text/template'>
         ## What is a <span class='pitest-pink'>*mutation*</span>?
 
-        - Replacement of boolean expression with `true` or `false`
-        - Replacement of arithmetic operations (`+`, `-`, `*`, `/`)
-        - Changing boolean relations (`>`, `>=`, `<`, `<=`, `==`)
-        - Statement deletion
-        - Statement duplication or insertion
+        <ul>
+          <li class='fragment fade-up'>Replacement of boolean expression with `true` or `false`</li>
+          <li class='fragment fade-up'>Replacement of arithmetic operations (`+`, `-`, `*`, `/`)</li>
+          <li class='fragment fade-up'>Changing boolean relations (`>`, `>=`, `<`, `<=`, `==`)</li>
+          <li class='fragment fade-up'>Statement deletion</li>
+          <li class='fragment fade-up'>Statement duplication or insertion</li>
+        </ul>
       </script>
     </section>
 
@@ -161,10 +152,11 @@
 
     <section data-markdown>
       ## Configure Pitest
-
-      - Maven | Gradle | Ant quick starters
-      - Adding dependency
-      - Works with JUnit 5
+      <ul>
+        <li class='fragment fade-up'>Maven | Gradle | Ant quick starters</li>
+        <li class='fragment fade-up'>Adding dependency</li>
+        <li class='fragment fade-up'>Works with JUnit 5</li>
+      </ul>
 
       http://pitest.org/quickstart
     </section>
@@ -173,20 +165,16 @@
       <script type='text/template'>
         ### Configuration
 
-        - `targetClasses`
-        - `threads`
-        - [`mutators`](https://github.com/hcoles/pitest/blob/master/pitest/src/main/java/org/pitest/mutationtest/engine/gregor/config/Mutator.java)
-        ```
-        <configuration>
-          <mutators>
-            <mutator>CONSTRUCTOR_CALLS</mutator>
-            <mutator>NON_VOID_METHOD_CALLS</mutator>
-          </mutators>
-        </configuration>
-        ```
-        - `avoidCallsTo` (ie. for logging services)
-        - `skip`
-        - ...
+        <ul>
+          <li class='fragment fade-up'>`targetClasses`</li>
+          <li class='fragment fade-up'>`threads`</li>
+          <li class='fragment fade-up'>
+            [`mutators`](https://github.com/hcoles/pitest/blob/master/pitest/src/main/java/org/pitest/mutationtest/engine/gregor/config/Mutator.java)
+          </li>
+          <li class='fragment fade-up'>`avoidCallsTo` (ie. for logging services)</li>
+          <li class='fragment fade-up'>`skip`</li>
+          <li class='fragment fade-up'>...</li>
+        </ul>
       </script>
     </section>
 
@@ -234,11 +222,12 @@
       <script type='text/template'>
         ### How does it work?
 
-        - Pitest generates mutants by manipulating the bytecode
-        - A main process holds the list of all possible mutations
-        - Pitest creates a number of child processes (or <span
-            class='pitest-pink'>minions</span>) running tests against each mutant
-        </span>
+        <ul>
+          <li class='fragment fade-up'>Pitest generates mutants by manipulating the bytecode</li>
+          <li class='fragment fade-up'>A main process holds the list of all possible mutations</li>
+          <li class='fragment fade-up'>Pitest creates a number of child processes (or <span
+              class='pitest-pink'>minions</span>) running tests against each mutant</span></li>
+        </ul>
       </script>
     </section>
 
@@ -246,17 +235,21 @@
       <script type='text/template'>
         ### A mutant is identified with
 
-        - Mutation operator
-        - Class and method signature
-        - Index to the bytecode instruction which is mutated
-
+        <ul>
+          <li class='fragment fade-up'>Mutation operator</li>
+          <li class='fragment fade-up'>Class and method signature</li>
+          <li class='fragment fade-up'>Index to the bytecode instruction which is mutated</li>
+        </ul>
         ![minions](./assets/minions.png)
       </script>
     </section>
 
     <section data-markdown>
       <script type='text/template'>
-        <h3><div class='logo'>![tesseract](./assets/tesseract-logo.png)</div>Tesseract</h3>
+        <h3>
+          <div class='logo'>![tesseract](./assets/tesseract-logo.png)</div>
+          Tesseract
+        </h3>
 
         ![tesseract](./assets/tesseract.png)
       </script>
@@ -266,10 +259,13 @@
       <script type='text/template'>
         ### Feedbacks
 
-        - Setup is <span class='pitest-pink'>easy</span> (configuration options)
-        - Fast feedbacks
-        - It’s fast: 5'30 vs 8’30” (maven) so <span class='pitest-pink'>+3’00</span> for <span class='pitest-pink'>1200+ unit tests</span>
-        - You need ‘real’ unit tests so it can keep fast and efficient
+        <ul>
+          <li class='fragment fade-up'>Setup is <span class='pitest-pink'>easy</span> (configuration options)</li>
+          <li class='fragment fade-up'>Fast feedbacks</li>
+          <li class='fragment fade-up'>It’s fast: 5'30 vs 8’30” (maven) so <span class='pitest-pink'>+3’00</span> for
+            <span class='pitest-pink'>1200+ unit tests</span></li>
+          <li class='fragment fade-up'>You need ‘real’ unit tests so it can keep fast and efficient</li>
+        </ul>
       </script>
     </section>
 
@@ -292,23 +288,29 @@
     <section data-markdown>
       <script type='text/template'>
         ### Going further
-
-        - <span
-            class='pitest-pink'>scmMutationCoverage</span> to focus on updated classes (by default *ADDED* or *MODIFIED*)
-        - Setup <span class='pitest-pink'>mutationThreshold</span> or/and <span
-            class='pitest-pink'>coverageThreshold</span>
-        - Configure new <span class='pitest-pink'>mutators</span>
+        <ul>
+          <li class='fragment fade-up'>
+            <span class='pitest-pink'>scmMutationCoverage</span> to focus on updated classes (by default *ADDED* or
+            *MODIFIED*)
+          </li>
+          <li class='fragment fade-up'>Setup <span class='pitest-pink'>mutationThreshold</span> or/and <span
+              class='pitest-pink'>coverageThreshold</span></li>
+          <li class='fragment fade-up'>Configure new <span class='pitest-pink'>mutators</span></li>
+        </ul>
       </script>
     </section>
 
     <section data-markdown>
       <script type='text/template'>
         ### What did we just learn?
-
-        - Code quality is not just about basic coverage results
-        - Mutation coverage highlights <span class='pitest-pink'>unit tests relevance</span>
-        - It helps building <span class='pitest-pink'>better unit tests</span>
-        - Pitest is really easy to setup in a java project
+        <ul>
+          <li class='fragment fade-up'>Code quality is not just about basic coverage results</li>
+          <li class='fragment fade-up'>Mutation coverage highlights <span
+              class='pitest-pink'>unit tests relevance</span>
+          </li>
+          <li class='fragment fade-up'>It helps building <span class='pitest-pink'>better unit tests</span></li>
+          <li class='fragment fade-up'>Pitest is really easy to setup in a java project</li>
+        </ul>
       </script>
     </section>
     <section data-markdown>
@@ -325,21 +327,15 @@
 <script src='js/reveal.js'></script>
 
 <script>
-  // More info about config & dependencies:
-  // - https://github.com/hakimel/reveal.js#configuration
-  // - https://github.com/hakimel/reveal.js#dependencies
   Reveal.initialize({
     dependencies: [
       { src: 'plugin/markdown/marked.js' },
       { src: 'plugin/markdown/markdown.js' },
-      { src: 'plugin/notes/notes.js', async: true },
-      {
-        src: 'plugin/highlight/highlight.js', async: true, callback: function () {
-          hljs.initHighlightingOnLoad();
-        }
-      }
+      // Zoom in and out with Alt+click
+      { src: 'plugin/zoom-js/zoom.js', async: true },
     ]
   });
+  Reveal.configure({ slideNumber: 'c/t' });
 </script>
 </body>
 </html>
