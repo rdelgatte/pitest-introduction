@@ -1,2 +1,2 @@
-# pitest-presentation
-Presentation for Pitest Demo
+# pitest-introduction
+Introduction to Pitest with example
